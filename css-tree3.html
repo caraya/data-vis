@@ -1,28 +1,32 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
 
-.node {
-  cursor: pointer;
-}
+	.node {
+	  cursor: pointer;
+	}
 
-.node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 1.5px;
+	}
 
-.node text {
-  font: 10px sans-serif;
-}
+	.node text {
+	  font: 10px sans-serif;
+	}
 
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
-}
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 1.5px;
+	}
 
-</style>
+	</style>
+	<title>Visual Overview of CSS Properties</title>
+</head>
 <body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -41,7 +45,8 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("body")
+	.append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -64,7 +69,7 @@ d3.json("css-data.json", function(error, flare) {
   update(root);
 });
 
-d3.select(self.frameElement).style("height", "800px");
+d3.select(self.frameElement).style("height", "100px");
 
 function update(source) {
 
@@ -93,7 +98,11 @@ function update(source) {
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-      .text(function(d) { return d.name; })
+/*
+	.append("svg:a")
+	.attr("xlink:href", function(d)
+			{return "http://docs.webplatform.org/wiki/css/properties";})  
+*/      .text(function(d) { return d.name; })
       .style("fill-opacity", 1e-6);
 
   // Transition nodes to their new position.
@@ -166,3 +175,5 @@ function click(d) {
 }
 
 </script>
+</body>
+</html>
