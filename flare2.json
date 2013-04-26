@@ -1,0 +1,97 @@
+{
+ "name": "CSS Properties",
+ "children": [
+  {
+    "name": "borders",
+    "children": [
+      {
+        "name": "border", "size": 3938
+      },
+
+      {
+        "name": "Border After Properties",
+        "children": [{
+          "name": "border-after", "size": 3938},
+          {"name": "border-after-color", "size": 3938},
+          {"name": "border-after-style", "size": 3938},
+          {"name": "border-after-width", "size": 3938}]
+      },
+
+      {
+        "name": "Border Before Properties",
+        "children": [{
+          "name": "border-before", "size": 3938},
+          {"name": "border-before-color", "size": 3938},
+          {"name": "border-before-style", "size": 3938},
+          {"name": "border-before-width", "size": 3938}]
+      },
+
+      {
+        "name": "Border Before Properties",
+        "children": [{
+          "name": "border-bottom-color", "size": 3938},
+          {"name": "border-bottom-colors", "size": 3938},
+          {"name": "border-bottom-left-radius", "size": 3938},
+          {"name": "border-bottom-right-radius", "size": 3938},
+          {"name": "border-bottom-style", "size": 3938},
+          {"name": "border-bottom-width", "size": 3938}]
+      },
+
+      {
+        "name": "Border End Properties",
+        "children": [{
+          "name": "border-end", "size": 3938},
+          {"name": "border-end-color", "size": 3938},
+          {"name": "border-end-style", "size": 3938},
+          {"name": "border-end-width", "size": 3938}]
+      },
+      
+      {
+        "name": "Border Image Properties",
+        "children": [{
+          "name": "border-image", "size": 3938},
+          {"name": "border-image-outset", "size": 3938},
+          {"name": "border-image-repeat", "size": 3938},
+          {"name": "border-image-slice", "size": 3938},
+          {"name": "border-image-source", "size": 3938},
+          {"name": "border-image-width", "size": 3938}]
+      },
+
+      {
+        "name": "Border Left Properties",
+        "children": [{
+          "name": "border-left", "size": 3938},
+          {"name": "border-left-color", "size": 3938},
+          {"name": "border-left-style", "size": 3938},
+          {"name": "border-left-width", "size": 3938}]
+      },
+      {
+        "name": "Border Left Properties",
+        "children": [{
+          "name": "border-horizontal-spacing", "size": 3938},
+          {"name": "border-fit", "size": 3938},
+          {"name": "border-collapse", "size": 3938},
+          {"name": "border-color", "size": 3938}]
+      }]
+      },
+      {
+       "name": "Column",
+       "children": [
+         {"name": "column-axis", "size": 3938},
+         {"name": "column-break-after", "size": 3938},
+         {"name": "column-break-before", "size": 3938},
+         {"name": "column-break-inside", "size": 3938},
+         {"name": "column-count", "size": 3938},
+         {"name": "column-fill", "size": 3938},
+         {"name": "column-gap", "size": 3938},
+         {"name": "column-progression", "size": 3938},
+         {"name": "column-rule", "size": 3938},
+         {"name": "column-rule-color", "size": 3938},
+         {"name": "column-rule-color", "size": 3938},
+         {"name": "column-rule-style", "size": 3938},
+         {"name": "column-rule-width", "size": 3938},
+         {"name": "column-span", "size": 3938},
+         {"name": "column-width", "size": 3938},
+         {"name": "columns", "size": 3938}]
+    }]
+}  
