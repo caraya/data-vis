@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html
+	xmlns:xlink="http://www.w3.org/1999/xlink">
 <head>
 	<meta charset="utf-8">
 	<style>
@@ -87,6 +88,13 @@ function update(source) {
   // Enter any new nodes at the parent's previous position.
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
+      .attr("class", function(d) { //added by Carlos on 4/29/13
+				if (d.children) {
+					return "inner node"
+				} else {
+        return "leaf node"
+				}
+			})
       .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
       .on("click", click);
 
@@ -95,15 +103,14 @@ function update(source) {
       .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeEnter.append("text")
+      .append("svg:a")
+  		.attr("xlink:href", function(d){return d.url;})
+// 			.style("fill-opacity", 1)
+      .text(function(d) { return d.name; })
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
-      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-/*
-	.append("svg:a")
-	.attr("xlink:href", function(d)
-			{return "http://docs.webplatform.org/wiki/css/properties";})  
-*/      .text(function(d) { return d.name; })
-      .style("fill-opacity", 1e-6);
+      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; });
+//      .style("fill-opacity", 1e-6);
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -111,7 +118,7 @@ function update(source) {
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-      .attr("r", 4.5)
+			.attr("r", 4.5)
       .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeUpdate.select("text")
@@ -162,6 +169,7 @@ function update(source) {
   });
 }
 
+var svg
 // Toggle children on click.
 function click(d) {
   if (d.children) {
@@ -173,6 +181,7 @@ function click(d) {
   }
   update(d);
 }
+
 
 </script>
 </body>
