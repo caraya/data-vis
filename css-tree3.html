@@ -103,7 +103,7 @@ function update(source) {
   nodeEnter.append("circle")
     .attr("r", 1e-6)
     .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-	
+	// Order of attributes added by Carlos on 10/28/13
   	nodeEnter.append("text")
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
