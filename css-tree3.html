@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html
-	xmlns:xlink="http://www.w3.org/1999/xlink">
+  xmlns:xlink="http://www.w3.org/1999/xlink">
 <head>
-	<meta charset="utf-8">
-	<style>
+  <meta charset="utf-8">
+  <style>
 
-	.node {
-	  cursor: pointer;
-	}
+  .node {
+    cursor: pointer;
+  }
 
-	.node circle {
-	  fill: #fff;
-	  stroke: steelblue;
-	  stroke-width: 1.5px;
-	}
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
 
-	.node text {
-	  font: 10px sans-serif;
-	}
+  .node text {
+    font: 10px sans-serif;
+    text-anchor: middle;
+    
+  }
 
-	.link {
-	  fill: none;
-	  stroke: #ccc;
-	  stroke-width: 1.5px;
-	}
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
 
-	</style>
-	<title>Visual Overview of CSS Properties</title>
+  </style>
+  <title>Visual Overview of CSS Properties</title>
 </head>
 <body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -47,14 +49,14 @@ var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.y, d.x]; });
 
 var svg = d3.select("body")
-	.append("svg")
+  .append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("css-data.json", function(error, flare) {
-  root = flare;
+d3.json("css-data.json", function(error, css) {
+  root = css;
   root.x0 = height / 2;
   root.y0 = 0;
 
@@ -89,28 +91,29 @@ function update(source) {
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
       .attr("class", function(d) { //added by Carlos on 4/29/13
-				if (d.children) {
-					return "inner node"
-				} else {
-        return "leaf node"
-				}
-			})
+        if (d.children) {
+          return "inner node"
+        } else {
+          return "leaf node"
+        }
+      })
       .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
       .on("click", click);
 
   nodeEnter.append("circle")
-      .attr("r", 1e-6)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-
-  nodeEnter.append("text")
-      .append("svg:a")
-  		.attr("xlink:href", function(d){return d.url;})
-// 			.style("fill-opacity", 1)
-      .text(function(d) { return d.name; })
+    .attr("r", 1e-6)
+    .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	
+  	nodeEnter.append("text")
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
-      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; });
-//      .style("fill-opacity", 1e-6);
+      .append("svg:a") // added by carlos on 4/29/13
+      .attr("xlink:href", function(d){return d.url;}) // added by carlos on 4/29/13
+      .style("fill-opacity", 1) // added by carlos on 4/29/13
+      .text(function(d) { return d.name; })
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; });
+     
+      //.style("fill-opacity", 1e-6);
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -118,7 +121,7 @@ function update(source) {
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-			.attr("r", 4.5)
+      .attr("r", 4.5)
       .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeUpdate.select("text")
