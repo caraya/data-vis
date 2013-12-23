@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Quick Start Guide Example</title>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+</head>
+<body>
+  <div id="map" style="width: 600px; height: 400px"></div>
+
+  <script>
+  // API Key: 52b3b20703eb47858ce9f65e5d9dd387
+  // LAT: 37.3894
+  // LONG: 122.0819
+  // X Tile: 6874
+  // Y Tile: 3177
+  var map = L.map('map').setView([37.3894, -122.0819], 13);
+
+  L.tileLayer('http://{s}.tile.cloudmade.com/52b3b20703eb47858ce9f65e5d9dd387/997/256/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  </script>
+</body>
+</html>
+
