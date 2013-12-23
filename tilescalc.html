@@ -1,0 +1,91 @@
+
+<!-- saved from url=(0026)http://oms.wff.ch/calc.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Tilesname WebCalc V1.0</title>
+<style id="clearly_highlighting_css" type="text/css">/* selection */ html.clearly_highlighting_enabled ::-moz-selection { background: rgba(246, 238, 150, 0.99); } html.clearly_highlighting_enabled ::selection { background: rgba(246, 238, 150, 0.99); } /* cursor */ html.clearly_highlighting_enabled {    /* cursor and hot-spot position -- requires a default cursor, after the URL one */    cursor: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--cursor.png") 14 16, text; } /* highlight tag */ em.clearly_highlight_element {    font-style: inherit !important; font-weight: inherit !important;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow.png");    background-repeat: repeat-x; background-position: top left; background-size: 100% 100%; } /* the delete-buttons are positioned relative to this */ em.clearly_highlight_element.clearly_highlight_first { position: relative; } /* delete buttons */ em.clearly_highlight_element a.clearly_highlight_delete_element {    display: none; cursor: pointer;    padding: 0; margin: 0; line-height: 0;    position: absolute; width: 34px; height: 34px; left: -17px; top: -17px;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite.png"); background-repeat: no-repeat; background-position: 0px 0px; } em.clearly_highlight_element a.clearly_highlight_delete_element:hover { background-position: -34px 0px; } /* retina */ @media (min--moz-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {    em.clearly_highlight_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow@2x.png"); }    em.clearly_highlight_element a.clearly_highlight_delete_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite@2x.png"); background-size: 68px 34px; } } </style><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head>
+<body style="">
+<script type="text/javascript">
+
+function toxy() {
+
+var zoom = document.forms.Form1.zoom.value;
+var vlong = document.forms.Form1.long.value;
+var vlat  = document.forms.Form1.lat.value;
+document.forms.Form1.xlong.value = long2tile(vlong,zoom);
+document.forms.Form1.ylat.value = lat2tile(vlat,zoom);
+
+}
+
+function tolonlat() {
+
+var vzoom = document.forms.Form1.zoom.value;
+var xlong = 3.12;
+xlong = document.forms.Form1.xlong.value;
+var ylat  = document.forms.Form1.ylat.value;
+document.forms.Form1.long.value=xlong = tile2long(xlong,vzoom);
+document.forms.Form1.lat.value=ylat = tile2lat(ylat,vzoom);
+
+}
+
+function long2tile(lon,zoom1) { 
+tt = Number(lon);
+return (Math.floor((tt+180)/360*Math.pow(2,zoom1)));
+}
+
+function lat2tile(lat,zoom2)  { 
+return (Math.floor((1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom2))); 
+}
+
+function tile2long(x,z) {
+  return (x/Math.pow(2,z)*360-180);
+ }
+ 
+function tile2lat(y,z) {
+  var n=Math.PI-2*Math.PI*y/Math.pow(2,z);
+  return (180/Math.PI*Math.atan(0.5*(Math.exp(n)-Math.exp(-n))));
+ }
+
+</script>
+
+<p>Please enter the lon/lat and press the button (to X,Y) to get the X,Y of the Tiles in OpenStreetMap.</p>
+<p>To obtain the lon/lat just fill in the values X and Y and press (to lon/lat) and you havee the result<br>
+in the lon/lat fields</p>
+<form name="Form1" action="./tilescalc_files/tilescalc.html">
+    <table>
+    <tbody><tr><td width="50px">zoom&nbsp;</td><td>
+      <select name="zoom" size="1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option selected="">16</option>
+      <option>17</option>
+      <option>18</option>
+    </select>
+    </td></tr>
+    <tr><td>lon</td><td><input name="long" value="7.56198"></td></tr>
+    <tr><td>lat</td><td><input name="lat" value="47.47607"></td></tr>
+    </tbody></table>
+    &nbsp;&nbsp;<input type="button" name=" to X,Y " value="to X,Y" onclick="toxy()">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" name=" to lon/lat " value="to lon/lat" onclick="tolonlat()"><br>
+    <table>      
+    <tbody><tr><td width="50px">X</td><td><input name="xlong"></td></tr>
+    <tr><td>Y</td><td><input name="ylat"></td></tr>
+    </tbody></table>
+
+</form>
+
+<hr><p>GNU GPL v2 or later</p>
+
+</body><iframe id="evernoteFilingTools" src="./tilescalc_files/filing_tools.html"></iframe><iframe id="evernoteUserTools" src="./tilescalc_files/user_tools.html"></iframe><iframe id="evernoteShareTools" src="./tilescalc_files/share_tools.html"></iframe><iframe id="evernoteEmailSharing" src="./tilescalc_files/email_sharing.html"></iframe><iframe id="evernoteGlobalTools" src="./tilescalc_files/global_tools.html"></iframe></html>
