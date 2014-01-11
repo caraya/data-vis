@@ -26,7 +26,7 @@
         fill: '#000080'
     }));
     // The `pings` plugin draws animated pings on the globe.
-    globe.loadPlugin(planetaryjs.plugins.pings());
+    // globe.loadPlugin(planetaryjs.plugins.pings());
     // The `zoom` and `drag` plugins enable
     // manipulating the globe with the mouse.
     globe.loadPlugin(planetaryjs.plugins.zoom({
@@ -46,20 +46,19 @@
     globe.projection.scale(175).translate([175, 175]).rotate([0, - 10, 0]);
 
     // Every few hundred milliseconds, we'll draw another random ping.
-    var colors = ['red', 'yellow', 'white', 'orange', 'green', 'cyan', 'pink'];
-    setInterval(function() {
-        var lat = Math.random() * 170 - 85;
-        var lng = Math.random() * 360 - 180;
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        globe.plugins.pings.add(lng, lat, {
-            color: color,
-            ttl: 2000,
-            angle: Math.random() * 10
-        });
-    }, 150);
+    // var colors = ['red', 'yellow', 'white', 'orange', 'green', 'cyan', 'pink'];
+    // setInterval(function() {
+    //    var lat = Math.random() * 170 - 85;
+    //   var lng = Math.random() * 360 - 180;
+    //    var color = colors[Math.floor(Math.random() * colors.length)];
+    //    globe.plugins.pings.add(lng, lat, {
+    //        color: color,
+    //        ttl: 2000,
+    //        angle: Math.random() * 10
+    //    });
+    // }, 150);
 
     var canvas = document.getElementById('Globe');
-    // var canvas = document.getElementsByTagName("canvas")
     // Special code to handle high-density displays (e.g. retina, some phones)
     // In the future, Planetary.js will handle this by itself (or via a plugin).
     if (window.devicePixelRatio == 2) {
