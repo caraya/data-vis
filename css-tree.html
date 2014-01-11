@@ -5,21 +5,21 @@
     <script type="text/javascript" src="d3/d3.js"></script>
     <script type="text/javascript" src="d3/d3.layout.js"></script>
 <style>
- 
+
 .link {
   fill: none;
   stroke: #ccc;
   stroke-width: 4.5px;
 }
 </style>
- 
+
   </head>
   <body>
- 
+
     <div id="viz"></div>
- 
+
     <script type="text/javascript">
- 
+
       //JSON object with the data
       var clusterData = {
  "name": "CSS Properties",
@@ -62,7 +62,7 @@
           {"name": "border-end-style", "size": 1000},
           {"name": "border-end-width", "size": 1000}]
       },
-      
+
       {
         "name": "Border Image Properties",
         "children": [{
@@ -91,7 +91,7 @@
           {"name": "border-right-style", "size": 1000},
           {"name": "border-right-width", "size": 1000}]
       },
-      
+
       {
         "name": "Border Radius Properties",
         "children": [{
@@ -101,7 +101,7 @@
           {"name": "border-radius-topleft", "size": 1000},
           {"name": "border-radius-topright", "size": 1000}]
       },
-      
+
       {
         "name": "Border Top Properties",
         "children": [{
@@ -122,7 +122,7 @@
           {"name": "border-start-style", "size": 1000},
           {"name": "border-start-width", "size": 1000}]
       },
-            
+
       {
         "name": "Additional Border Properties",
         "children": [{
@@ -137,7 +137,7 @@
           {"name": "border-color", "size": 1000}]
       }
       ]},
-      
+
      {
         "name": "background",
         "children": [{
@@ -159,7 +159,7 @@
           {"name": "background-origin-x", "size": 1000},
           {"name": "background-origin-y", "size": 1000}]
       },
-      
+
       {
         "name": "Background position Properties",
         "children": [{
@@ -176,7 +176,7 @@
           {"name": "background-repeat-y", "size": 1000}]
       }
       ]},
-      
+
      {
         "name": "font",
         "children": [{
@@ -344,53 +344,53 @@
       }
     ]}
 ]}
- 
+
       // Create a svg canvas
       var vis = d3.select("#viz").append("svg:svg")
       .attr("width", 2400)
       .attr("height", 1800)
       .append("svg:g");
       //.attr("transform", "translate(40, 0)"); // shift everything to the right
- 
+
       // Create a cluster "canvas"
       var cluster = d3.layout.cluster()
     .size([2400,1800]);
- 
+
       var diagonal = d3.svg.diagonal()
       // change x and y (for the left to right cluster)
       .projection(function(d) { return [d.y, d.x]; });
- 
+
       // Preparing the data for the cluster layout, convert data into an array of nodes
       var nodes = cluster.nodes(clusterData);
       // Create an array with all the links
       var links = cluster.links(nodes);
- 
+
       console.log(clusterData)
       console.log(nodes)
       console.log(links)
- 
+
       var link = vis.selectAll("pathlink")
       .data(links)
       .enter().append("svg:path")
       .attr("class", "link")
       .attr("d", diagonal)
- 
+
       var node = vis.selectAll("g.node")
       .data(nodes)
       .enter().append("svg:g")
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
- 
+
       // Add the dot at every node
       node.append("svg:circle")
       .attr("r", 3.5);
- 
+
       // place the name atribute left or right depending if children
       node.append("svg:text")
       .attr("dx", function(d) { return d.children ? -8 : 8; })
       .attr("dy", 3)
       .attr("text-anchor", function(d) { return d.children ? "end" : "start"; })
       .text(function(d) { return d.name; })
- 
+
     </script>
   </body>
 </html>

@@ -18,7 +18,7 @@
   .node text {
     font: 10px sans-serif;
     text-anchor: middle;
-    
+
   }
 
   .link {
@@ -37,7 +37,7 @@
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = 2140 - margin.right - margin.left,
     height = 1640 - margin.top - margin.bottom;
-    
+
 var i = 0,
     duration = 750,
     root;
@@ -55,7 +55,7 @@ var svg = d3.select("body")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("css-data.json", function(error, css) {
+d3.json("json/css-data.json", function(error, css) {
   root = css;
   root.x0 = height / 2;
   root.y0 = 0;
@@ -112,7 +112,7 @@ function update(source) {
       .style("fill-opacity", 1) // added by carlos on 4/29/13
       .text(function(d) { return d.name; })
 	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; });
-     
+
       //.style("fill-opacity", 1e-6);
 
   // Transition nodes to their new position.
