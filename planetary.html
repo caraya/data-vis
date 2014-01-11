@@ -1,17 +1,22 @@
+
+<!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Planetary Example</title>
-  <script src="d3/d3.v3.min.js"></script>
-  <script src="d3/topojson.v1.min.js"></script>
-  <script src="planetary/planetaryjs.min.js"></script>
-  <script src="planetary/planetary-app.js"></script>
+  <title>Planetary.js: Awesome interactive globes for the web</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 </head>
 <body>
-  <canvas
-    id='basicGlobe'
-    width='400' height='400'
-    style='width: 400px; height: 400px; cursor: move;'>
-    </canvas>
+
+<canvas id="Globe" width="400" height="400" style="width: 400px; height: 400px; cursor: move;"></canvas>
+
+<script type='text/javascript' src="d3/d3.v3.min.js"></script>
+<script type='text/javascript' src="d3/topojson.v1.min.js"></script>
+<script type="text/javascript" src="planetary/planetaryjs.js"></script>
+
+<script type='text/javascript' src='planetary/planetary-app.js'></script>
+
 </body>
 </html>
