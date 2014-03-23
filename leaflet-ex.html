@@ -6,11 +6,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+  <link rel="stylesheet" href="Leaflet.markercluster/dist/MarkerCluster.css">
   <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+  <script src="Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <!--<script src="http://maps.stamen.com/js/tile.stamen.js?v1.2.1"></script> -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-  <div id="map" style="width: 600px; height: 400px"></div>
-
+  <div id="map" style="width: 800px; height: 600px"></div>
+  <div id="video1" style=""></div>
   <script>
   // API Key: 52b3b20703eb47858ce9f65e5d9dd387
   // LAT: 37.3894
@@ -24,7 +28,30 @@
     maxZoom: 18
   }).addTo(map);
 
-  </script>
+//var watercolor = new L.StamenTileLayer("watercolor").addTo(map);
+
+var markers = new L.MarkerClusterGroup();
+
+var addressPoints = [
+    [37.40453, -122.10445, "Mountain View, CA", "http://en.wikipedia.org/wiki/Mountain_View,_California"],
+    [37.3894, -122.0819, "Downtown Mountain View", "http://en.wikipedia.org/wiki/Mountain_View,_California#Downtown"],
+    [37.4418834, -122.1430195, "Palo Alto", "http://en.wikipedia.org/wiki/Palo_Alto,_California"],
+    [37.424106, -122.1660756, "Stanford", "http://en.wikipedia.org/wiki/Stanford,_California"],
+    [37.32922, -122.08368, "Rancho San Antonio", "http://en.wikipedia.org/wiki/Rancho_San_Antonio_County_Park"],
+    [36.9741171, -122.0307963, "Santa Cruz", "http://en.wikipedia.org/wiki/Santa_Cruz,_California"]
+];
+
+for (var i = 0; i < addressPoints.length; i++) {
+    var a = addressPoints[i];
+    var title = a[2];
+    var link = a[3]
+    var marker = new L.Marker(new L.LatLng(a[0], a[1]), {
+        title: title,
+        link: link
+    });
+    marker.bindPopup(title);
+    map.addLayer(marker);
+};</script>
 </body>
 </html>
 

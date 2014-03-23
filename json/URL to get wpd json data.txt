@@ -1,0 +1,1 @@
+http://docs.webplatform.org/w/index.php?title=Special:Ask&offset=0&limit=500&q=[[Category%3ACSS+Properties]]&p=format=json

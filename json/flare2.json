@@ -1,9 +1,4 @@
-{
- "name": "CSS Properties",
- "children": [
-  {
-    "name": "borders",
-    "children": [
+
       {
         "name": "border", "size": 3938
       },

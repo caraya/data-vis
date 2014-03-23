@@ -30,7 +30,7 @@
     // The `zoom` and `drag` plugins enable
     // manipulating the globe with the mouse.
     globe.loadPlugin(planetaryjs.plugins.zoom({
-        scaleExtent: [100, 300]
+        scaleExtent: [100, 800]
     }));
     globe.loadPlugin(planetaryjs.plugins.drag({
         // Dragging the globe should pause the
