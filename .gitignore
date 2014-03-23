@@ -1,8 +1,9 @@
 #Ignoring Mac Crap
 
 .DS_Store
-nvd3/
-datas-sources/
-leaflet/
-Leaflet.markercluster/
-planetary/
+nvd3
+datas-sources
+leaflet
+Leaflet.markercluster
+planetary
+rayuela
